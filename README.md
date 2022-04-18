@@ -3,7 +3,7 @@
 ## Descriptions
 - Arkamys Audio ported from BLU BOLD N1 for any Android 5 and up
 - No UI app
-- Improves internal speaker audio quality
+- Improves internal speaker audio quality (not for headphone nor bluetooth audio)
 - Global type soundfx
 
 ## Screenshots
