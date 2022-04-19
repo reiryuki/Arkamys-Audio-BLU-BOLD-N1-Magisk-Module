@@ -26,6 +26,7 @@
 
 ## Troubleshootings
 - https://t.me/androidryukimodsdiscussions/29836
+- https://t.me/androidryukimodsdiscussions/72328
 
 ## Bug Report
 - https://t.me/androidryukimodsdiscussions/2618
