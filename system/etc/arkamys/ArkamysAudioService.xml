@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
+    <boolean name="EffectEnable" value="true" />
 	<boolean name="ActivateArkamysOnBluetooth" value="false" />
 	<int name="presetIDforSpeakerOFF" value="0" />
 	<int name="presetIDforHeadsetOFF" value="-1" />
