@@ -5,6 +5,7 @@
 - No UI app
 - Improves internal speaker audio quality (not for headphone nor bluetooth audio)
 - Global type soundfx
+- Sources: https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module/blob/main/module.prop
 
 ## Screenshots
 - https://t.me/androidryukimods/484
