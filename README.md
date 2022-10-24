@@ -5,7 +5,7 @@
 - The MIT license specified here is for the Magisk Module, not for Arkamys apps and blobs.
 
 ## Descriptions
-- Audio service soundfx ported from BLU BOLD N1 and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Audio service soundfx ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - No user interface activity but service only
 - Improves internal speaker audio only (not for headphone nor bluetooth audio)
 - Global type soundfx
@@ -18,7 +18,7 @@
 
 ## Requirements
 - Android 5 and up
-- Magisk Installed
+- Magisk installed
 
 ## Installation Guide & Download Link
 - Install this module https://www.pling.com/p/1767297/ via Magisk Manager or Recovery
@@ -34,6 +34,7 @@
 
 ## Support & Bug Report
 - https://t.me/androidryukimodsdiscussions/2618
+- If you don't do above, issues will be closed immediately
 
 ## Tested on
 - Android 12 AncientOS ROM
