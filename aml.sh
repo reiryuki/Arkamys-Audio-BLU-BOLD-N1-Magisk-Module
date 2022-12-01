@@ -8,8 +8,7 @@ else
 fi
 
 # path
-MIRROR=$MAGISKTMP/mirror
-VENDOR=`realpath $MIRROR/vendor`
+VENDOR=`realpath $MAGISKTMP/mirror/vendor`
 
 # destination
 if [ -d $VENDOR/lib/soundfx ]; then
