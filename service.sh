@@ -6,6 +6,17 @@ AML=/data/adb/modules/aml
 exec 2>$MODPATH/debug.log
 set -x
 
+# restart
+if [ "$API" -ge 24 ]; then
+  SERVER=audioserver
+else
+  SERVER=mediaserver
+fi
+PID=`pidof $SERVER`
+if [ "$PID" ]; then
+  killall $SERVER
+fi
+
 # wait
 sleep 20
 
@@ -39,43 +50,32 @@ if [ -d $AML ] && [ ! -f $AML/disable ]\
 else
   DIR=$MODPATH/system/vendor
 fi
-FILE=`find $DIR/etc -maxdepth 1 -type f -name $NAME`
+FILES=`find $DIR/etc -maxdepth 1 -type f -name $NAME`
 if [ ! -d $ODM ] && [ "`realpath /odm/etc`" == /odm/etc ]\
-&& [ "$FILE" ]; then
-  for i in $FILE; do
-    j="/odm$(echo $i | sed "s|$DIR||")"
-    if [ -f $j ]; then
-      umount $j
-      mount -o bind $i $j
+&& [ "$FILES" ]; then
+  for FILE in $FILES; do
+    DES="/odm$(echo $FILE | sed "s|$DIR||")"
+    if [ -f $DES ]; then
+      umount $DES
+      mount -o bind $FILE $DES
     fi
   done
 fi
 if [ ! -d $MY_PRODUCT ] && [ -d /my_product/etc ]\
-&& [ "$FILE" ]; then
-  for i in $FILE; do
-    j="/my_product$(echo $i | sed "s|$DIR||")"
-    if [ -f $j ]; then
-      umount $j
-      mount -o bind $i $j
+&& [ "$FILES" ]; then
+  for FILE in $FILES; do
+    DES="/my_product$(echo $FILE | sed "s|$DIR||")"
+    if [ -f $DES ]; then
+      umount $DES
+      mount -o bind $FILE $DES
     fi
   done
 fi
 
-# restart
-if [ "$API" -ge 24 ]; then
-  PID=`pidof audioserver`
-  if [ "$PID" ]; then
-    killall audioserver
-  fi
-else
-  PID=`pidof mediaserver`
-  if [ "$PID" ]; then
-    killall mediaserver
-  fi
-fi
-
 # wait
-sleep 40
+until [ "`getprop sys.boot_completed`" == "1" ]; do
+  sleep 10
+done
 
 # grant
 PKG=com.arkamys.audio
@@ -83,5 +83,49 @@ pm grant $PKG android.permission.READ_PHONE_STATE
 if [ "$API" -ge 30 ]; then
   appops set $PKG AUTO_REVOKE_PERMISSIONS_IF_UNUSED ignore
 fi
+
+# function
+stop_log() {
+FILE=$MODPATH/debug.log
+SIZE=`du $FILE | sed "s|$FILE||"`
+if [ "$LOG" != stopped ] && [ "$SIZE" -gt 50 ]; then
+  exec 2>/dev/null
+  LOG=stopped
+fi
+}
+check_audioserver() {
+if [ "$NEXTPID" ]; then
+  PID=$NEXTPID
+else
+  PID=`pidof $SERVER`
+fi
+sleep 10
+stop_log
+NEXTPID=`pidof $SERVER`
+if [ "`getprop init.svc.$SERVER`" != stopped ]; then
+  until [ "$PID" != "$NEXTPID" ]; do
+    check_audioserver
+  done
+  killall $PROC
+  check_audioserver
+else
+  start $SERVER
+  check_audioserver
+fi
+}
+
+# check
+PROC=com.arkamys.audio
+killall $PROC
+check_audioserver
+
+
+
+
+
+
+
+
+
 
 
