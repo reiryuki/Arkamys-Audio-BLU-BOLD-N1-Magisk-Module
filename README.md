@@ -2,12 +2,11 @@
 
 ## DISCLAIMER
 - Arkamys apps and blobs are owned by Arkamys™.
-- The MIT license specified here is for the Magisk Module, not for Arkamys apps and blobs.
+- The MIT license specified here is for the Magisk Module only, not for Arkamys apps and blobs.
 
 ## Descriptions
 - Audio service soundfx ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - No user interface activity but service only
-- Improves internal speaker audio only (not for headphone nor bluetooth audio)
 - Global type soundfx
 
 ## Sources
@@ -18,12 +17,13 @@
 
 ## Requirements
 - Android 5 and up
-- Magisk installed
+- Magisk or KernelSU installed
 
 ## Installation Guide & Download Link
-- Install this module https://www.pling.com/p/1767297/ via Magisk app or Recovery
+- Install this module https://www.pling.com/p/1767297/ via Magisk app or KernelSU app or Recovery if Magisk installed
 - Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other audio mod module
 - Reboot
+- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot after
 
 ## Optionals
 - https://t.me/androidryukimodsdiscussions/60861
@@ -38,6 +38,7 @@
 
 ## Tested on
 - Android 12 AncientOS ROM
+- Android 13 CrDroid ROM
 
 ## Credits and contributors
 - https://t.me/viperatmos
