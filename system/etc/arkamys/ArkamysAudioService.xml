@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
     <boolean name="EffectEnable" value="true" />
-    <boolean name="ActivateArkamysOnBluetooth" value="false" />
-    <int name="presetIDforSpeakerOFF" value="0" />
-    <int name="presetIDforHeadsetOFF" value="-1" />
-    <int name="presetIDforBluetoothOFF" value="-1" />
-    <int name="defaultSpeakerPreset" value="1" />
-    <int name="defaultHeadphonePreset" value="-1" />
-    <int name="defaultBluetoothPreset" value="-1" />
-    <int name="coverSpeakerPreset" value="3" />
-    <int name="gameSpeakerPreset" value="5" />
-    <int name="movieSpeakerPreset" value="6" />
-    <int name="audioSpeakerPreset" value="7" />
-    <int name="gameHeadphonePreset" value="12" />
-    <int name="movieHeadphonePreset" value="10" />
-    <int name="audioHeadphonePreset" value="11" />
-    <boolean name="autoMode" value="false" />
-    <boolean name="currentAutoModeState" value="false" />
+    <boolean name="ActivateArkamysOnBluetooth" value="true" />
+    <int name="presetIDforSpeakerOFF" value="2" />
+    <int name="presetIDforHeadsetOFF" value="2" />
+    <int name="presetIDforBluetoothOFF" value="2" />
+    <int name="defaultSpeakerPreset" value="2" />
+    <int name="defaultHeadphonePreset" value="2" />
+    <int name="defaultBluetoothPreset" value="2" />
+    <int name="coverSpeakerPreset" value="2" />
+    <int name="gameSpeakerPreset" value="2" />
+    <int name="movieSpeakerPreset" value="2" />
+    <int name="audioSpeakerPreset" value="2" />
+    <int name="gameHeadphonePreset" value="2" />
+    <int name="movieHeadphonePreset" value="2" />
+    <int name="audioHeadphonePreset" value="2" />
+    <boolean name="autoMode" value="true" />
+    <boolean name="currentAutoModeState" value="true" />
     <int name="autoModeScanTime" value="5000" />
 </map>
