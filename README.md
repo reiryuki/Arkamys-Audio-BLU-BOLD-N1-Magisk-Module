@@ -6,6 +6,7 @@
 
 ## Descriptions
 - Audio service soundfx ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Optimizes internal speaker sound only
 - No user interface activity but service only
 - Global type soundfx
 
@@ -16,6 +17,7 @@
 - https://t.me/androidryukimods/484
 
 ## Requirements
+- 32 bit architecture or 64 bit architecture with 32 bit library support
 - Android 5 and up
 - Magisk or KernelSU installed
 
@@ -46,7 +48,7 @@
 - You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
 
 ## Thanks for Donations
-- This Magisk Module is always will be free but you can however show us that you are care by making a donations:
+This Magisk Module is always will be free but you can however show us that you are care by making a donations:
 - https://ko-fi.com/reiryuki
 - https://www.paypal.me/reiryuki
 - https://t.me/androidryukimodsdiscussions/2619
