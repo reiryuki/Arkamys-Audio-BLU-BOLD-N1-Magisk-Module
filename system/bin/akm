@@ -33,6 +33,10 @@ elif [ "$1" == db ]; then
   killall $PKG
   sleep 1
   echo "\033[31m\033[1mArkamys Audio is disabled for Bluetooth audio\033[0m"
+elif [ "$1" == r ]; then
+  rm -f $FILE
+  killall $PKG
+  sleep 1
 else
   echo "Arkamys Audio options:"
   echo "akm es (Enable Arkamys Audio for internal speaker)"
@@ -41,6 +45,7 @@ else
   echo "akm dh (Disable Arkamys Audio for headphone)"
   echo "akm eb (Enable Arkamys Audio for Bluetooth audio)"
   echo "akm db (Disable Arkamys Audio for Bluetooth audio)"
+  echo "akm r (Reset Arkamys Audio data)"
 fi
 DSP=`grep defaultSpeakerPreset $FILE | sed -e 's|.*<int name="defaultSpeakerPreset" value="||g' -e 's|" />||g' -e 's|"/>||g'`
 [ "$DSP" -eq 0 ] && DSP="\033[92m\033[1mEnabled\033[0m" || DSP="\033[31m\033[1mDisabled\033[0m"
