@@ -23,16 +23,17 @@
 
 ## Installation Guide & Download Link
 - Install this module https://www.pling.com/p/1767297/ via Magisk app or KernelSU app or Recovery if Magisk installed
-- Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other audio mod module
+- Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot after
 
 ## Optionals
-- https://t.me/androidryukimodsdiscussions/60861
-- https://t.me/androidryukimodsdiscussions/26764
+- Global: https://t.me/androidryukimodsdiscussions/60861
+- Stream: https://t.me/androidryukimodsdiscussions/26764
 
 ## Troubleshootings
-- https://t.me/androidryukimodsdiscussions/29836
+- https://t.me/androidryukimodsdiscussions/72328
+- Global: https://t.me/androidryukimodsdiscussions/29836
 
 ## Support & Bug Report
 - https://t.me/androidryukimodsdiscussions/2618
@@ -40,7 +41,7 @@
 
 ## Tested on
 - Android 12 AncientOS ROM
-- Android 13 CrDroid ROM
+- Android 13 CrDroid ROM & AlphaDroid ROM
 
 ## Credits and contributors
 - https://t.me/viperatmos
