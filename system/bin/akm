@@ -1,8 +1,7 @@
-#!/system/bin/sh
+#!/bin/sh
 
-UID=`id -u`
-PKG=com.arkamys.audio
-FILE=/data/user/"$UID"/$PKG/shared_prefs/ArkamysAudioService.xml
+# function
+run_akm() {
 if [ "$1" == es ]; then
   sed -i 's|SpeakerPreset" value="-1"|SpeakerPreset" value="0"|g' $FILE
   killall $PKG
@@ -48,11 +47,11 @@ else
   echo "akm r (Reset Arkamys Audio data)"
 fi
 DSP=`grep defaultSpeakerPreset $FILE | sed -e 's|.*<int name="defaultSpeakerPreset" value="||g' -e 's|" />||g' -e 's|"/>||g'`
-[ "$DSP" -eq 0 ] && DSP="\033[92m\033[1mEnabled\033[0m" || DSP="\033[31m\033[1mDisabled\033[0m"
+[ "$DSP" -ne -1 ] && DSP="\033[92m\033[1mEnabled\033[0m" || DSP="\033[31m\033[1mDisabled\033[0m"
 DHP=`grep defaultHeadphonePreset $FILE | sed -e 's|.*<int name="defaultHeadphonePreset" value="||g' -e 's|" />||g' -e 's|"/>||g'`
-[ "$DHP" -eq 0 ] && DHP="\033[92m\033[1mEnabled\033[0m" || DHP="\033[31m\033[1mDisabled\033[0m"
+[ "$DHP" -ne -1 ] && DHP="\033[92m\033[1mEnabled\033[0m" || DHP="\033[31m\033[1mDisabled\033[0m"
 DBP=`grep defaultBluetoothPreset $FILE | sed -e 's|.*<int name="defaultBluetoothPreset" value="||g' -e 's|" />||g' -e 's|"/>||g'`
-[ "$DBP" -eq 0 ] && DBP="\033[92m\033[1mEnabled\033[0m" || DBP="\033[31m\033[1mDisabled\033[0m"
+[ "$DBP" -ne -1 ] && DBP="\033[92m\033[1mEnabled\033[0m" || DBP="\033[31m\033[1mDisabled\033[0m"
 PID=`pidof $PKG`
 echo "Arkamys Audio current status:"
 echo "Internal speaker = $DSP"
@@ -64,3 +63,14 @@ echo "is connected, Arkamys Audio will be applied in"
 echo "Bluetooth audio even the Bluetooth audio option is"
 echo "disabled. If it's occur, then just disconnect and"
 echo "reconnect the Bluetooth."
+}
+
+# start
+UID=`id -u`
+PKG=com.arkamys.audio
+FILE=/data/user/"$UID"/$PKG/shared_prefs/ArkamysAudioService.xml
+if [ -f $FILE ]; then
+  run_akm "$1"
+else
+  echo "$FILE not found"
+fi
