@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
     <boolean name="EffectEnable" value="true" />
-    <boolean name="ActivateArkamysOnBluetooth" value="true" />
     <int name="presetIDforSpeakerOFF" value="-1" />
     <int name="presetIDforHeadsetOFF" value="-1" />
     <int name="presetIDforBluetoothOFF" value="-1" />
@@ -15,7 +14,7 @@
     <int name="gameHeadphonePreset" value="-1" />
     <int name="movieHeadphonePreset" value="-1" />
     <int name="audioHeadphonePreset" value="-1" />
-    <boolean name="autoMode" value="true" />
-    <boolean name="currentAutoModeState" value="true" />
+    <boolean name="autoMode" value="false" />
+    <boolean name="currentAutoModeState" value="false" />
     <int name="autoModeScanTime" value="5000" />
 </map>
