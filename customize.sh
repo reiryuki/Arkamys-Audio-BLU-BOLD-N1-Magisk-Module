@@ -29,6 +29,13 @@ if [ "`grep_prop debug.log $OPTIONALS`" == 1 ]; then
   ui_print " "
 fi
 
+# recovery
+if [ "$BOOTMODE" != true ]; then
+  MODPATH_UPDATE=`echo $MODPATH | sed 's|modules/|modules_update/|g'`
+  rm -f $MODPATH/update
+  rm -rf $MODPATH_UPDATE
+fi
+
 # run
 . $MODPATH/function.sh
 
@@ -49,17 +56,12 @@ else
 fi
 ui_print " "
 
-# 32 bit
-if [ ! "$LIST32BIT" ]; then
-  abort "- This ROM doesn't support 32 bit library."
-fi
-
 # sdk
 NUM=21
 if [ "$API" -lt $NUM ]; then
   ui_print "! Unsupported SDK $API."
   ui_print "  You have to upgrade your Android version"
-  ui_print "  at least SDK API $NUM to use this module."
+  ui_print "  at least SDK $NUM to use this module."
   abort
 else
   ui_print "- SDK $API"
@@ -68,6 +70,28 @@ fi
 
 # recovery
 mount_partitions_in_recovery
+
+# bit
+AUDIO64BIT=`grep linker64 /vendor/bin/hw/*audio*`
+if [ "$LIST32BIT" ]; then
+  if [ "$IS64BIT" == true ]; then
+    ui_print "- 64 bit architecture"
+    ui_print " "
+    ui_print "- 32 bit library support"
+    ui_print " "
+  else
+    ui_print "- 32 bit architecture"
+    rm -rf `find $MODPATH -type d -name *64*`
+    ui_print " "
+  fi
+  if [ "$AUDIO64BIT" ]; then
+    ui_print "! This module uses 32 bit audio service only"
+    ui_print "  But this ROM uses 64 bit audio service"
+    abort
+  fi
+else
+  abort "! This ROM doesn't support 32 bit library"
+fi
 
 # magisk
 magisk_setup
@@ -96,7 +120,10 @@ ui_print "- Cleaning..."
 PKGS=`cat $MODPATH/package.txt`
 if [ "$BOOTMODE" == true ]; then
   for PKG in $PKGS; do
-    RES=`pm uninstall $PKG 2>/dev/null`
+    FILE=`find /data/app -name *$PKG*`
+    if [ "$FILE" ]; then
+      RES=`pm uninstall $PKG 2>/dev/null`
+    fi
   done
 fi
 remove_sepolicy_rule
@@ -118,12 +145,12 @@ for NAME in $NAMES; do
     sh $FILE
     rm -f $FILE
   fi
-  rm -rf /metadata/magisk/$NAME
-  rm -rf /mnt/vendor/persist/magisk/$NAME
-  rm -rf /persist/magisk/$NAME
-  rm -rf /data/unencrypted/magisk/$NAME
-  rm -rf /cache/magisk/$NAME
-  rm -rf /cust/magisk/$NAME
+  rm -rf /metadata/magisk/$NAME\
+   /mnt/vendor/persist/magisk/$NAME\
+   /persist/magisk/$NAME\
+   /data/unencrypted/magisk/$NAME\
+   /cache/magisk/$NAME\
+   /cust/magisk/$NAME
 done
 }
 
@@ -252,91 +279,8 @@ done
 # hide
 APPS="`ls $MODPATH/system/priv-app` `ls $MODPATH/system/app`"
 hide_oat
-APPS=MusicFX
+APPS="MusicFX AudioFX"
 hide_app
-
-# stream mode
-FILE=$MODPATH/.aml.sh
-PROP=`grep_prop stream.mode $OPTIONALS`
-if echo "$PROP" | grep -q m; then
-  ui_print "- Activating music stream..."
-  sed -i 's|#m||g' $FILE
-  sed -i 's|musicstream=|musicstream=true|g' $MODPATH/acdb.conf
-  ui_print " "
-else
-  APPS=AudioFX
-  hide_app
-fi
-if echo "$PROP" | grep -q r; then
-  ui_print "- Activating ring stream..."
-  sed -i 's|#r||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q a; then
-  ui_print "- Activating alarm stream..."
-  sed -i 's|#a||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q s; then
-  ui_print "- Activating system stream..."
-  sed -i 's|#s||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q v; then
-  ui_print "- Activating voice_call stream..."
-  sed -i 's|#v||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q n; then
-  ui_print "- Activating notification stream..."
-  sed -i 's|#n||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q b; then
-  ui_print "- Activating bluetooth_sco stream..."
-  sed -i 's|#b||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q f; then
-  ui_print "- Activating dtmf stream..."
-  sed -i 's|#f||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q e; then
-  ui_print "- Activating enforced_audible stream..."
-  sed -i 's|#e||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q y; then
-  ui_print "- Activating accessibility stream..."
-  sed -i 's|#y||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q t; then
-  ui_print "- Activating tts stream..."
-  sed -i 's|#t||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q i; then
-  ui_print "- Activating assistant stream..."
-  sed -i 's|#i||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q c; then
-  ui_print "- Activating call_assistant stream..."
-  sed -i 's|#c||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q p; then
-  ui_print "- Activating patch stream..."
-  sed -i 's|#p||g' $FILE
-  ui_print " "
-fi
-if echo "$PROP" | grep -q g; then
-  ui_print "- Activating rerouting stream..."
-  sed -i 's|#g||g' $FILE
-  ui_print " "
-fi
 
 # directory
 if [ "$API" -le 25 ]; then
@@ -360,7 +304,7 @@ fi
 # raw
 FILE=$MODPATH/.aml.sh
 if [ "`grep_prop disable.raw $OPTIONALS`" == 0 ]; then
-  ui_print "- Not disables Ultra Low Latency playback (RAW)"
+  ui_print "- Does not disable Ultra Low Latency playback (RAW)"
   ui_print " "
 else
   sed -i 's|#u||g' $FILE

@@ -12,12 +12,13 @@
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
+- libmagiskpolicy.so: Kitsune Mask R65C33E4F
 
 ## Screenshots
 - https://t.me/androidryukimods/484
 
 ## Requirements
-- 32 bit architecture or 64 bit architecture with 32 bit library support
+- 32 bit audio service (this also can be found in 64 bit ROM with 32 bit support, not only 32 bit ROM)
 - Android 5 and up
 - Magisk or KernelSU installed
 
@@ -25,7 +26,7 @@
 - Install this module https://www.pling.com/p/1767297/ via Magisk app or KernelSU app or Recovery if Magisk installed
 - Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other else audio mod module
 - Reboot
-- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot after
+- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
 
 ## Optionals
 - Global: https://t.me/androidryukimodsdiscussions/60861
@@ -42,16 +43,14 @@
 ## Tested on
 - Android 12 AncientOS ROM
 - Android 13 CrDroid ROM & AlphaDroid ROM
+- Android 14 LineageOS ROM
 
-## Credits and contributors
+## Credits and Contributors
 - https://t.me/viperatmos
 - https://t.me/androidryukimodsdiscussions
 - You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
 
-## Thanks for Donations
-This Magisk Module is always will be free but you can however show us that you are care by making a donations:
-- https://ko-fi.com/reiryuki
-- https://www.paypal.me/reiryuki
+## Sponsors
 - https://t.me/androidryukimodsdiscussions/2619
 
 

@@ -46,22 +46,6 @@ chmod 0755 $MODPATH/*/libmagiskpolicy.so
 FILE=$MODPATH/sepolicy.pfsd
 sepolicy_sh
 
-# list
-PKGS=`cat $MODPATH/package.txt`
-for PKG in $PKGS; do
-  magisk --denylist rm $PKG 2>/dev/null
-  magisk --sulist add $PKG 2>/dev/null
-done
-if magisk magiskhide sulist; then
-  for PKG in $PKGS; do
-    magisk magiskhide add $PKG
-  done
-else
-  for PKG in $PKGS; do
-    magisk magiskhide rm $PKG
-  done
-fi
-
 # run
 . $MODPATH/copy.sh
 
@@ -71,7 +55,8 @@ ACDB=/data/adb/modules/acdb
 if [ -d $ACDB ] && [ ! -f $ACDB/disable ]; then
   if [ ! -d $AML ] || [ -f $AML/disable ]; then
     rm -f `find $MODPATH/system/etc $MODPATH/vendor/etc\
-     $MODPATH/system/vendor/etc -maxdepth 1 -type f -name $AUD`
+     $MODPATH/system/vendor/etc -maxdepth 1 -type f -name\
+     *audio*effects*.conf -o -name *audio*effects*.xml`
   fi
 fi
 
@@ -84,8 +69,8 @@ FILES=`find $MODPATH/system/bin -type f`
 for FILE in $FILES; do
   chmod 0755 $FILE
 done
-chown -R 0.2000 $MODPATH/system/bin
 if [ "$API" -ge 26 ]; then
+  chown -R 0.2000 $MODPATH/system/bin
   DIRS=`find $MODPATH/vendor\
              $MODPATH/system/vendor -type d`
   for DIR in $DIRS; do
@@ -136,7 +121,7 @@ fi
 FILE=$MODPATH/cleaner.sh
 if [ -f $FILE ]; then
   . $FILE
-  mv -f $FILE $FILE\.txt
+  mv -f $FILE $FILE.txt
 fi
 
 
