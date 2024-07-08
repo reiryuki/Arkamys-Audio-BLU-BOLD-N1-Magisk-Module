@@ -72,7 +72,7 @@ fi
 mount_partitions_in_recovery
 
 # bit
-AUDIO64BIT=`grep linker64 /vendor/bin/hw/*audio*`
+AUDIO64BIT=`grep linker64 /*/bin/hw/*audio*`
 if [ "$LIST32BIT" ]; then
   if [ "$IS64BIT" == true ]; then
     ui_print "- 64 bit architecture"

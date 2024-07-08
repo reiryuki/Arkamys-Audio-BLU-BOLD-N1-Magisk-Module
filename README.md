@@ -5,10 +5,10 @@
 - The MIT license specified here is for the Magisk Module only, not for Arkamys apps and blobs.
 
 ## Descriptions
-- Audio service soundfx ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Sound effect ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - Optimizes internal speaker sound only
 - No user interface activity but service only
-- Global type soundfx
+- Global type sound effect
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
@@ -25,6 +25,7 @@
 ## Installation Guide & Download Link
 - Install this module https://www.pling.com/p/1767297/ via Magisk app or KernelSU app or Recovery if Magisk installed
 - Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other else audio mod module
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
 

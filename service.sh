@@ -133,7 +133,7 @@ check_audioserver
 }
 
 # check
-PROC=com.arkamys.audio
+PROC=`cat $MODPATH/package.txt`
 killall $PROC
 check_audioserver
 
