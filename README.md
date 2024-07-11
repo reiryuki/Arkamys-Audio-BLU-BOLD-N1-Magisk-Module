@@ -5,7 +5,7 @@
 - The MIT license specified here is for the Magisk Module only, not for Arkamys apps and blobs.
 
 ## Descriptions
-- Sound effect ported from BLU BOLD N1 (n0030ww) and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Sound effect ported from BLU BOLD N1 (N0030WW) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - Optimizes internal speaker sound only
 - No user interface activity but service only
 - Global type sound effect
