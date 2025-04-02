@@ -6,7 +6,7 @@ echo "Pausing media playback"
 input keyevent KEYCODE_MEDIA_PAUSE
 echo "Restarting Arkamys Audio"
 killall $PKG
-sleep 1
+sleep 2
 }
 run_akm() {
 if [ "$1" == es ]; then
@@ -69,11 +69,26 @@ echo "reconnect the Bluetooth."
 if [ "`whoami`" == root ]; then
   UID=`id -u`
   PKG=com.arkamys.audio
-  FILE=/data/user/"$UID"/$PKG/shared_prefs/ArkamysAudioService.xml
-  if [ -f $FILE ]; then
+  DIR=/data/user/"$UID"/$PKG
+  PREF=$DIR/shared_prefs
+  FILE=$PREF/ArkamysAudioService.xml
+  if [ -d $DIR ]; then
+    if [ ! -f $FILE ]; then
+      OWN=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
+      if [ ! -d $PREF ]; then
+        mkdir $PREF
+        chmod 0700 $PREF
+        chown $OWN.$OWN $PREF
+      fi
+      cp -f /vendor/etc/arkamys/ArkamysAudioService.xml $FILE
+      chmod 0600 $FILE
+      chown $OWN.$OWN $FILE
+    fi
     run_akm "$1"
   else
-    echo "$FILE not found"
+    echo "$DIR not found"
+    echo "It seems ArkamysAudio.apk is unsupported in this ROM"
+    echo "because it's not installed nor creating data at all"
   fi
 else
   echo "Please type su first!"
