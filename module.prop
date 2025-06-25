@@ -1,7 +1,7 @@
 id=ArkamysAudio
 name=Arkamys Audio BLU BOLD N1
-version=v1.4
-versionCode=14
+version=v1.5
+versionCode=15
 author=Rei Ryuki the Fixer
 description=Global type sound effect ported from BLU BOLD N1 (N0030WW) for any armeabi-v7a or arm64-v8a architecture, Android 5 and up. Optimizes internal speaker sound only.
 
