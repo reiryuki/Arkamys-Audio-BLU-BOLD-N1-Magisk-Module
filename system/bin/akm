@@ -12,11 +12,11 @@ run_akm() {
 if [ "$1" == es ]; then
   sed -i 's|SpeakerPreset" value=".*"|SpeakerPreset" value="0"|g' $FILE
   restart_akm
-  echo "\033[92m\033[1mArkamys Audio is enabled for internal speaker\033[0m"
+  echo "\033[92m\033[1mArkamys Audio is enabled for loudspeaker\033[0m"
 elif [ "$1" == ds ]; then
   sed -i 's|SpeakerPreset" value=".*"|SpeakerPreset" value="-1"|g' $FILE
   restart_akm
-  echo "\033[31m\033[1mArkamys Audio is disabled for internal speaker\033[0m"
+  echo "\033[31m\033[1mArkamys Audio is disabled for loudspeaker\033[0m"
 elif [ "$1" == eh ]; then
   sed -i 's|HeadphonePreset" value=".*"|HeadphonePreset" value="0"|g' $FILE
   restart_akm
@@ -38,8 +38,8 @@ elif [ "$1" == r ]; then
   restart_akm
 else
   echo "Arkamys Audio options:"
-  echo "akm es (Enable Arkamys Audio for internal speaker)"
-  echo "akm ds (Disable Arkamys Audio for internal speaker)"
+  echo "akm es (Enable Arkamys Audio for loudspeaker)"
+  echo "akm ds (Disable Arkamys Audio for loudspeaker)"
   echo "akm eh (Enable Arkamys Audio for headphone)"
   echo "akm dh (Disable Arkamys Audio for headphone)"
   echo "akm eb (Enable Arkamys Audio for Bluetooth audio)"
@@ -54,7 +54,7 @@ DBP=`grep defaultBluetoothPreset $FILE | sed -e 's|.*<int name="defaultBluetooth
 [ "$DBP" -eq 0 ] && DBP="\033[92m\033[1mEnabled\033[0m" || DBP="\033[31m\033[1mDisabled\033[0m"
 PID=`pidof $PKG`
 echo "Arkamys Audio current status:"
-echo "Internal speaker = $DSP"
+echo "Loudspeaker = $DSP"
 echo "Headphone = $DHP"
 echo "Bluetooth audio = $DBP"
 echo "PID = $PID"
