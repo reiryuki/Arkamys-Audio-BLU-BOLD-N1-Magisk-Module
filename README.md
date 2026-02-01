@@ -6,7 +6,7 @@
 
 ## Descriptions
 - Sound effect ported from BLU BOLD N1 (N0030WW) and integrated as a Magisk Module for all supported and rooted devices with Magisk
-- Optimizes internal speaker sound only
+- Optimizes loudspeaker sound only
 - No user interface activity but service only
 - Global type sound effect
 
@@ -19,14 +19,14 @@
 
 ## Requirements
 - armeabi-v7a or arm64-v8a architecture
-- 32 bit audio service (this also can be found in 64 bit ROM with 32 bit support, not only 32 bit ROM)
+- 32 bit HIDL audio service (this also can be found in 64 bit ROM with 32 bit support, not only 32 bit ROM)
 - Android 5 and up
-- Magisk or KernelSU installed
+- Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide & Download Link
-- Install this module https://www.pling.com/p/1767297/ via Magisk app or KernelSU app or Recovery if Magisk installed
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs first
+- Install this module https://www.pling.com/p/1767297/ via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
-- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
 
