@@ -17,6 +17,50 @@
 ## Screenshots
 - https://t.me/androidryukimods/484
 
+## Changelog
+
+v1.8
+- Does not disable raw playback (You can use Audio Compatibility Patch Reborn Magisk Module instead)
+
+v1.7
+- Fix wrong target in latest KernelSU
+
+v1.6
+- Tidy up aml.sh
+- Exclude audioeffectshaptic.xml
+- Abort installation if fail to mount mirror system
+- Fix wrong file permissions in some ROMs
+
+v1.5
+- Improve /odm and /my_product support detection
+
+v1.4
+- Improve akm script
+
+v1.3
+- Add Action button to clear apps caches
+- Fix architecture detection in some weird ROMs
+- Fix bug in uninstall.sh
+
+v1.2
+- Allow installation in Android Emulator
+- Fix architecture detection
+
+v1.1
+- Using hardwareaudio instead of audio* for AUDIO64BIT detection
+
+v1.0
+- Fix audio service architecture detection in Android Nougat and bellow
+
+v0.9
+- Change some stuffs in ArkamysAudioService.xml
+- Improve akm script
+- Improve audio_effects.xml patch detection
+- Fix conflict with modules_update while installing via recovery if Magisk installed
+- Fix architecture detection
+- Fix MagiskHide & SUList
+- Fix script bug
+
 ## Requirements
 - armeabi-v7a or arm64-v8a architecture
 - 32 bit HIDL audio service (this also can be found in 64 bit ROM with 32 bit support, not only 32 bit ROM)
@@ -25,7 +69,7 @@
 
 ## Installation Guide & Download Link
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs first
-- Install this module https://www.pling.com/p/1767297/ via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards

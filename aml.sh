@@ -11,7 +11,6 @@ if [ ! "$libdir" ]; then
 fi
 MODAECS=`find $MODPATH -type f -name *audio*effects*.conf`
 MODAEXS=`find $MODPATH -type f -name *audio*effects*.xml`
-MODAPS=`find $MODPATH -type f -name *policy*.conf -o -name *policy*.xml`
 
 # function
 archdir() {
@@ -291,12 +290,6 @@ if [ "$ARCHDIR" ]; then
     sed -i "/<effects>/a\        <effect name=\"$NAME\" library=\"$LIBNAME\" uuid=\"$UUID\"\/>" $MODAEX
   done
 fi
-
-# patch audio policy
-#ufor MODAP in $MODAPS; do
-#u  sed -i 's|RAW|NONE|g' $MODAP
-#u  sed -i 's|,raw||g' $MODAP
-#udone
 
 
 
