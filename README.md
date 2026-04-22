@@ -15,7 +15,7 @@
 - libmagiskpolicy.so: Kitsune Mask R6687BB53
 
 ## Screenshots
-- https://t.me/androidryukimods/484
+https://t.me/androidryukimods/484
 
 ## Changelog
 
@@ -62,13 +62,13 @@ v0.9
 - Fix script bug
 
 ## Requirements
-- armeabi-v7a or arm64-v8a architecture
-- 32 bit HIDL audio service (this also can be found in 64 bit ROM with 32 bit support, not only 32 bit ROM)
+- armeabi-v7a or arm64-v8a with armeabi-v7a support architecture
+- 32 bit HIDL audio service
 - Android 5 and up
 - Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide & Download Link
-- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs first
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount first depending on ROM compatibility
 - Install this module https://devuploads.com/9pesrazlv2wk via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
@@ -93,6 +93,6 @@ v0.9
 - You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
 
 ## Sponsors
-- https://t.me/ryukinotes/25
+https://t.me/ryukinotes/25
 
 
