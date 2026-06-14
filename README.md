@@ -72,6 +72,7 @@ https://t.me/androidryukimods/484
 - You can configure this sound effect preferences via Termux/Terminal Emulator:
 
 `su`
+
 `akm`
 
 ## Optionals
