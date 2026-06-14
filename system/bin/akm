@@ -61,7 +61,7 @@ echo "PID = $PID"
 echo "If you are running any option while Bluetooth audio"
 echo "is connected, Arkamys Audio will be applied in"
 echo "Bluetooth audio even the Bluetooth audio option is"
-echo "disabled. If it's occur, then just disconnect and"
+echo "disabled. If it occurs, then just disconnect and"
 echo "reconnect the Bluetooth."
 }
 
@@ -74,7 +74,7 @@ if [ "`whoami`" == root ]; then
   FILE=$PREF/ArkamysAudioService.xml
   if [ -d $DIR ]; then
     if [ ! -f $FILE ]; then
-      OWN=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
+      OWN=`grep "^$PKG " /data/system/packages.list | awk '{print $2}'`
       if [ ! -d $PREF ]; then
         mkdir $PREF
         chmod 0700 $PREF
