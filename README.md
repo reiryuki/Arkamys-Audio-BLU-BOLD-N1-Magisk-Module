@@ -12,12 +12,14 @@
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
-- libmagiskpolicy.so: Kitsune Mask R6687BB53
-
-## Screenshots
-https://t.me/androidryukimods/484
+- libmagiskpolicy.so: Magisk (stable) 30.7 (30700)
 
 ## Changelog
+
+v1.9
+- Support NoMount metamodule
+- Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
+- Move _uninstall.log to /data/adb/logs/
 
 v1.8
 - Does not disable raw playback (You can use Audio Compatibility Patch Reborn Magisk Module instead)
@@ -27,7 +29,7 @@ v1.7
 
 v1.6
 - Tidy up aml.sh
-- Exclude audioeffectshaptic.xml
+- Exclude \*audio\*effects\*haptic\*.xml
 - Abort installation if fail to mount mirror system
 - Fix wrong file permissions in some ROMs
 
@@ -52,14 +54,8 @@ v1.1
 v1.0
 - Fix audio service architecture detection in Android Nougat and bellow
 
-v0.9
-- Change some stuffs in ArkamysAudioService.xml
-- Improve akm script
-- Improve audio_effects.xml patch detection
-- Fix conflict with modules_update while installing via recovery if Magisk installed
-- Fix architecture detection
-- Fix MagiskHide & SUList
-- Fix script bug
+## Screenshots
+https://t.me/androidryukimods/484
 
 ## Requirements
 - armeabi-v7a or arm64-v8a with armeabi-v7a support architecture
@@ -68,11 +64,15 @@ v0.9
 - Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide & Download Link
-- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount first depending on ROM compatibility
-- Install this module https://devuploads.com/9pesrazlv2wk via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
+- You can configure this sound effect preferences via Termux/Terminal Emulator:
+
+`su`
+`akm`
 
 ## Optionals
 - Global: https://t.me/ryukinotes/35
