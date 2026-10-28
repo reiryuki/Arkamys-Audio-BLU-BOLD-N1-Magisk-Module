@@ -1,8 +1,8 @@
 id=ArkamysAudio
 name=Arkamys Audio BLU BOLD N1
-version=v1.9
-versionCode=19
+version=v2.0
+versionCode=20
 author=Rei Ryuki the Fixer
-description=Global type sound effect ported from BLU BOLD N1 (N0030WW) for any armeabi-v7a or arm64-v8a architecture, Android 5 and up. Optimizes loudspeaker sound only.
+description=Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) for any armeabi-v7a or arm64-v8a architecture, Android 9 (SDK 28) and up.
 
 

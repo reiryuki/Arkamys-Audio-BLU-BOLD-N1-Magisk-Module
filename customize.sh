@@ -123,15 +123,40 @@ if [ "$KSU" == true ]; then
   ui_print " KSUVersion=$KSU_VER"
   ui_print " KSUVersionCode=$KSU_VER_CODE"
   ui_print " KSUKernelVersionCode=$KSU_KERNEL_VER_CODE"
-  sed -i 's|#k||g' $MODPATH/post-fs-data.sh
 else
   ui_print " MagiskVersion=$MAGISK_VER"
   ui_print " MagiskVersionCode=$MAGISK_VER_CODE"
 fi
 ui_print " "
 
+# architecture
+if [ "$ABILIST" ]; then
+  ui_print "- $ABILIST architecture"
+  ui_print " "
+fi
+NAME=arm64-v8a
+NAME2=armeabi-v7a
+if ! echo "$ABILIST" | grep -q $NAME; then
+  if [ "$BOOTMODE" == true ]; then
+    ui_print "! This ROM doesn't support $NAME architecture"
+  else
+    ui_print "! This Recovery doesn't support $NAME architecture"
+    ui_print "  Try to install via Magisk app instead"
+  fi
+  abort
+fi
+if ! echo "$ABILIST" | grep -q $NAME2; then
+  rm -rf $MODPATH/system*/lib\
+   $MODPATH/system*/vendor/lib
+  if [ "$BOOTMODE" != true ]; then
+    ui_print "! This Recovery doesn't support $NAME2 architecture"
+    ui_print "  Try to install via Magisk app instead"
+    ui_print " "
+  fi
+fi
+
 # sdk
-NUM=21
+NUM=28
 if [ "$API" -lt $NUM ]; then
   ui_print "! Unsupported SDK $API."
   ui_print "  You have to upgrade your Android version"
@@ -145,38 +170,8 @@ fi
 # recovery
 mount_partitions_in_recovery
 
-# architecture
-if [ "$ABILIST" ]; then
-  ui_print "- $ABILIST architecture"
-  ui_print " "
-fi
-NAME=arm64-v8a
-NAME2=armeabi-v7a
-if ! echo "$ABILIST" | grep -q $NAME; then
-  rm -rf `find $MODPATH/system -type d -name *64*`
-  if [ "$BOOTMODE" != true ]; then
-    ui_print "! This Recovery doesn't support $NAME architecture"
-    ui_print "  Try to install via Magisk app instead"
-    ui_print " "
-  fi
-fi
-if ! echo "$ABILIST" | grep -q $NAME2; then
-  if [ "$BOOTMODE" == true ]; then
-    abort "! This ROM doesn't support $NAME2 architecture"
-  else
-    ui_print "! This Recovery doesn't support $NAME2 architecture"
-    ui_print "  Try to install via Magisk app instead"
-    abort
-  fi
-fi
-if ! file /*/bin/hw/*audio* | grep -q 32-bit; then
-  ui_print "! This module uses 32 bit audio service only"
-  ui_print "  But this ROM uses 64 bit audio service"
-  abort
-fi
-
-# magisk
-magisk_setup
+# mirror
+mirror_setup
 
 # path
 SYSTEM=`realpath $MIRROR/system`
@@ -185,14 +180,6 @@ PRODUCT=`realpath $MIRROR/product`
 SYSTEM_EXT=`realpath $MIRROR/system_ext`
 ODM=`realpath $MIRROR/odm`
 MY_PRODUCT=`realpath $MIRROR/my_product`
-
-# sepolicy
-FILE=$MODPATH/sepolicy.rule
-DES=$MODPATH/sepolicy.pfsd
-if [ "`grep_prop sepolicy.sh $OPTIONALS`" == 1 ]\
-&& [ -f $FILE ]; then
-  mv -f $FILE $DES
-fi
 
 # .aml.sh
 mv -f $MODPATH/aml.sh $MODPATH/.aml.sh
@@ -267,43 +254,6 @@ elif [ -d $DIR ]\
   ui_print "- Different module name is detected"
   ui_print "  Cleaning-up $MODID data..."
   cleanup
-  ui_print " "
-fi
-
-# function
-permissive_2() {
-sed -i 's|#2||g' $MODPATH/post-fs-data.sh
-}
-permissive() {
-FILE=/sys/fs/selinux/enforce
-FILE2=/sys/fs/selinux/policy
-if [ "`toybox cat $FILE`" = 1 ]; then
-  chmod 640 $FILE
-  chmod 440 $FILE2
-  echo 0 > $FILE
-  if [ "`toybox cat $FILE`" = 1 ]; then
-    ui_print "  Your device can't be turned to Permissive state."
-    ui_print "  Using Magisk Permissive mode instead."
-    permissive_2
-  else
-    echo 1 > $FILE
-    sed -i 's|#1||g' $MODPATH/post-fs-data.sh
-  fi
-else
-  sed -i 's|#1||g' $MODPATH/post-fs-data.sh
-fi
-}
-
-# permissive
-if [ "`grep_prop permissive.mode $OPTIONALS`" == 1 ]; then
-  ui_print "- Using device Permissive mode."
-  rm -f $MODPATH/sepolicy.rule
-  permissive
-  ui_print " "
-elif [ "`grep_prop permissive.mode $OPTIONALS`" == 2 ]; then
-  ui_print "- Using Magisk Permissive mode."
-  rm -f $MODPATH/sepolicy.rule
-  permissive_2
   ui_print " "
 fi
 
@@ -390,13 +340,6 @@ MODSYSTEM=/system
 
 # unmount
 unmount_mirror
-
-
-
-
-
-
-
 
 
 

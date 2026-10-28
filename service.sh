@@ -69,7 +69,7 @@ fi
 
 # grant
 PKG=com.arkamys.audio
-if appops get $PKG > /dev/null 2>&1; then
+if appops get $PKG >/dev/null 2>&1; then
   pm grant --all-permissions $PKG
   if [ "$API" -ge 30 ]; then
     appops set $PKG AUTO_REVOKE_PERMISSIONS_IF_UNUSED ignore
@@ -110,13 +110,6 @@ check_audioserver
 PROC=`cat $MODPATH/package.txt`
 killall $PROC
 check_audioserver
-
-
-
-
-
-
-
 
 
 

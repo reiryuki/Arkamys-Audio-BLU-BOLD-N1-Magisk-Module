@@ -36,8 +36,3 @@ allow mtk_hal_audio mtk_hal_audio tcp_socket create
 allow audioserver audioserver tcp_socket create
 
 
-
-
-
-
-

@@ -4,19 +4,26 @@
 - Arkamys apps and blobs are owned by Arkamys™.
 - The MIT license specified here is for the Magisk Module only, not for Arkamys apps and blobs.
 
-## Descriptions
-- Sound effect ported from BLU BOLD N1 (N0030WW) and integrated as a Magisk Module for all supported and rooted devices with Magisk
-- Optimizes loudspeaker sound only
-- No user interface activity but service only
-- Global type sound effect
+## Description
+Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
-- libmagiskpolicy.so: Magisk (stable) 30.7 (30700)
+- Reverse engeneered by @isus203
 
-## Changelog
+## Download Links and Changelog
 
-v1.9
+v2.0 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
+- Reverse engeneered by @isus203
+  - Add user interface with some new features
+  - 64 bit audio service support
+  - Enhances headset mode and Bluetooth mode audio
+- Minimum SDK 28 (Android 9)
+- Remove akm script
+- Remove libmagiskpolicy.so
+- Removes conflicted weird modules
+
+v1.9 https://move2link.co/bd79401
 - Support NoMount metamodule
 - Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
 - Move _uninstall.log to /data/adb/logs/
@@ -51,40 +58,31 @@ v1.2
 v1.1
 - Using hardwareaudio instead of audio* for AUDIO64BIT detection
 
-v1.0
-- Fix audio service architecture detection in Android Nougat and bellow
+## Download Tutorial
+https://t.me/ryukinotes/97
 
-## Screenshots
-https://t.me/androidryukimods/484
+## Screenshot
+https://t.me/ryukimodsscreenshots/126
 
 ## Requirements
-- armeabi-v7a or arm64-v8a with armeabi-v7a support architecture
-- 32 bit HIDL audio service
-- Android 5 and up
+- arm64-v8a or armeabi-v7a architecture
+- HIDL audio service
+- Android 9 (SDK 28) and up
 - Magisk or Kitsune Mask or KernelSU or Apatch installed
 
-## Installation Guide & Download Link
+## Installation Guide
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
-- Install this module https://move2link.co/bd79401 via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
-- You can configure this sound effect preferences via Termux/Terminal Emulator:
-
-`su`
-
-`akm`
-
-## Download Tutorial
-https://t.me/ryukinotes/97
 
 ## Optionals
 - Global: https://t.me/ryukinotes/35
 - Stream: https://t.me/ryukinotes/52
 
 ## Troubleshootings
-- https://t.me/ryukinotes/64
-- Global: https://t.me/ryukinotes/34
+Global: https://t.me/ryukinotes/34
 
 ## Support & Bug Report
 - https://t.me/ryukinotes/54
@@ -92,9 +90,10 @@ https://t.me/ryukinotes/97
 
 ## Credits and Contributors
 - @HuskyDG
+- @isus203
 - https://t.me/viperatmos
 - https://t.me/androidryukimodsdiscussions
-- You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
+- https://t.me/androidappsportdevelopment
 
 ## Sponsors
 https://t.me/ryukinotes/25

@@ -24,6 +24,3 @@ remove_sepolicy_rule
 
 
 
-
-
-

@@ -274,6 +274,7 @@ done
 # patch audio effects
 LIB=libarkamys.so
 LIBNAME=arkamys
+LIBNAME=Arkamysfx
 NAME=Arkamysfx
 UUID=17852d50-161e-11e2-892e-0800200c9a66
 RMVS="$LIB $LIBNAME $NAME $UUID"
@@ -290,12 +291,6 @@ if [ "$ARCHDIR" ]; then
     sed -i "/<effects>/a\        <effect name=\"$NAME\" library=\"$LIBNAME\" uuid=\"$UUID\"\/>" $MODAEX
   done
 fi
-
-
-
-
-
-
 
 
 
