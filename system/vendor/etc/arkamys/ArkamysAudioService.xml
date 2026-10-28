@@ -1,20 +1,82 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+    Copyright 2026 Arkamys 64-bit Port Contributors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!--
+ArkamysAudio service settings. The file is placed in `/vendor/etc/arkamys/` and, upon the first launch, is copied to the application's `shared_prefs` directory; the service subsequently reads from this copy (new values from `/vendor` are only applied after the application's data is cleared).
+
+Preset ID = the number at the beginning of the filename in `/vendor/etc/arkamys/config_presets/`:
+  0_TUNING, 1_TUNING, 2_TUNING, 10_TUNING, 12_TUNING, 14_TUNING, 16_TUNING — AINUR settings
+  8_BYPASS, 9_BYPASS, 19_BYPASS — AINUR sound "disabled" (bypass)
+  3_SPK — factory preset for the BLU speaker
+  -1 = no preset: the DSP is disabled (set to bypass) for this case.
+
+Currently, the values mirror those in the AINUR ArkAddon: 1 for the speaker, 10 for headphones and Bluetooth, and 9 when disabled.
+-->
+
 <map>
+    <!-- The effect is enabled (true) or disabled (false). It can be toggled using a switch in the app. -->
     <boolean name="EffectEnable" value="true" />
-    <int name="presetIDforSpeakerOFF" value="-1" />
-    <int name="presetIDforHeadsetOFF" value="-1" />
-    <int name="presetIDforBluetoothOFF" value="-1" />
-    <int name="defaultSpeakerPreset" value="0" />
-    <int name="defaultHeadphonePreset" value="-1" />
-    <int name="defaultBluetoothPreset" value="-1" />
-    <int name="coverSpeakerPreset" value="0" />
-    <int name="gameSpeakerPreset" value="0" />
-    <int name="movieSpeakerPreset" value="0" />
-    <int name="audioSpeakerPreset" value="0" />
-    <int name="gameHeadphonePreset" value="-1" />
-    <int name="movieHeadphonePreset" value="-1" />
-    <int name="audioHeadphonePreset" value="-1" />
+
+    <!-- The preset that is active when the effect is OFF (for speaker / headphones / Bluetooth).
+         Number >= 0: the effect continues to operate using this preset, similar to AINUR (9 = 9_BYPASS).
+         -1: processing is completely disabled (BLU behavior). -->
+    <int name="presetIDforSpeakerOFF" value="9" />
+    <int name="presetIDforHeadsetOFF" value="9" />
+    <int name="presetIDforBluetoothOFF" value="9" />
+
+    <!-- The preset that is active when the effect is ON, set independently for each output.
+         The preset selected in the app (forcePreset) is saved here for both the speaker and the headphones. -->
+    <int name="defaultSpeakerPreset" value="1" />
+    <int name="defaultHeadphonePreset" value="10" />
+    <int name="defaultBluetoothPreset" value="10" />
+
+    <!-- Speaker preset with case closed (output SpeakerCover). -->
+    <int name="coverSpeakerPreset" value="1" />
+
+    <!-- Presets for Game / Movie / Music modes for the speaker and headphones. These are applied when a mode is selected via the `setMode` call (3 = Game, 2 = Movie, 1 = Music, 4 = Normal). -->
+    <int name="gameSpeakerPreset" value="1" />
+    <int name="movieSpeakerPreset" value="1" />
+    <int name="audioSpeakerPreset" value="1" />
+    <int name="gameHeadphonePreset" value="10" />
+    <int name="movieHeadphonePreset" value="10" />
+    <int name="audioHeadphonePreset" value="10" />
+
+    <!-- AINUR processing mode: includes reverberation, Loudness, and BassEx, just as in AINUR. If set to `true`, the audio output for all presets will be bit-for-bit identical to the original AINUR (reverberation requires 12/14/16_TUNING; in the original BLU, this setting is configurable but non-functional). If set to `false`, the output will be bit-for-bit identical to the original BLU. This setting takes effect from the moment the service is started. -->
+    <boolean name="ainurReverb" value="true" />
+
+    <!-- Automatic mode based on the type of running application (game / video / music).
+         `autoMode` enables monitoring, `currentAutoModeState` stores the last state of the toggle,
+         and `autoModeScanTime` defines the check interval in milliseconds.
+         Currently, the mode is only detected and logged; it does not yet switch presets. -->
     <boolean name="autoMode" value="false" />
     <boolean name="currentAutoModeState" value="false" />
     <int name="autoModeScanTime" value="5000" />
+
+    <!-- Additional observers in the AINUR style. Disabled by default; with the exception of
+         legacyCallSuspendEffectEnabled, they only log events and do not alter the sound. -->
+         
+    <!-- Monitor headphone and Bluetooth connections. -->
+    <boolean name="legacyAudioDeviceWatcherEnabled" value="false" />
+    <!-- Monitor the phone's position sensors. -->
+    <boolean name="legacySensorMonitoringEnabled" value="false" />
+    <!-- Monitor calls. -->
+    <boolean name="legacyPhoneMonitoringEnabled" value="false" />
+    <!-- Disable DSP during a call (while ringing or in conversation). Does not affect the EffectEnable setting. -->
+    <boolean name="legacyCallSuspendEffectEnabled" value="false" />
+    <!-- AINUR dynamic sensor mode: 0 = disabled, 1 = monitoring only, 2 = logging only the intended preset changes based on orientation. -->
+    <int name="legacySensorSpeakerMode" value="0" />
 </map>
