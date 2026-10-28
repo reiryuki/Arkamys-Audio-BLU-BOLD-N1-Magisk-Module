@@ -2,5 +2,6 @@
 <exceptions>
     <exception package="com.arkamys.audiofx">
         <permission name="android.permission.READ_PHONE_STATE" fixed="false"/>
+        <permission name="android.permission.BLUETOOTH_CONNECT" fixed="false"/>
     </exception>
 </exceptions>
