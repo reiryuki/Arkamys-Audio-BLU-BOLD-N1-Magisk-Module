@@ -21,6 +21,7 @@ v2.0 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
 - Minimum SDK 28 (Android 9)
 - Remove akm script
 - Remove libmagiskpolicy.so
+- Resets module folders/files permissions at post-fs-data
 - Removes conflicted weird modules
 
 v1.9 https://move2link.co/bd79401
