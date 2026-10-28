@@ -11,6 +11,15 @@ Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) and integra
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
 - Reverse engeneered by @isus203
 
+## Screenshots
+https://t.me/ryukimodsscreenshots/126
+
+## Requirements
+- arm64-v8a or armeabi-v7a architecture
+- HIDL audio service
+- Android 9 (SDK 28) and up
+- Magisk or Kitsune Mask or KernelSU or Apatch installed
+
 ## Download Links and Changelog
 
 v2.0 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
@@ -61,15 +70,6 @@ v1.1
 
 ## Download Tutorial
 https://t.me/ryukinotes/97
-
-## Screenshot
-https://t.me/ryukimodsscreenshots/126
-
-## Requirements
-- arm64-v8a or armeabi-v7a architecture
-- HIDL audio service
-- Android 9 (SDK 28) and up
-- Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
