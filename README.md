@@ -9,7 +9,7 @@ Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) and integra
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/blu/n0030ww full_k71v1_64_bsp-user-9-PPR1.180610.011-1571196448-release-keys
-- Reverse engeneered by @isus203
+- Reverse engeneered by @isus203 https://github.com/xz529/arkamys_modules_README
 
 ## Screenshots
 https://t.me/ryukimodsscreenshots/126
