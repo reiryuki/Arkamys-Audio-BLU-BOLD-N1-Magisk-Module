@@ -85,7 +85,7 @@ https://t.me/ryukinotes/97
 ## Troubleshootings
 Global: https://t.me/ryukinotes/34
 
-## Support & Bug Report
+## Support and Bug Report
 - https://t.me/ryukinotes/54
 - If you don't do above, issues will be closed immediately
 
@@ -96,7 +96,7 @@ Global: https://t.me/ryukinotes/34
 - https://t.me/androidryukimodsdiscussions
 - https://t.me/androidappsportdevelopment
 
-## Sponsors
+## Sponsors and Donation
 https://t.me/ryukinotes/25
 
 
