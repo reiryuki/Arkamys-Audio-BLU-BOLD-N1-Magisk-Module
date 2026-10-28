@@ -22,7 +22,7 @@ https://t.me/ryukimodsscreenshots/126
 
 ## Download Links and Changelog
 
-v2.0 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
+v2.0 https://move2link.co/ac955df
 - Reverse engeneered by @isus203
   - Add user interface with some new features
   - 64 bit audio service support
