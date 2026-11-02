@@ -1,8 +1,8 @@
 # Arkamys Audio BLU BOLD N1 Magisk Module
 
 ## DISCLAIMER
-- Arkamys apps and blobs are owned by Arkamys™.
-- The MIT license specified here is for the Magisk Module only, not for Arkamys apps and blobs.
+- Arkamys app and blobs are owned by Arkamys™.
+- The MIT license specified here is for the Magisk Module only, not for Arkamys app and blobs.
 
 ## Description
 Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) and integrated as a Magisk Module for all supported and rooted devices with Magisk
