@@ -58,10 +58,12 @@ Currently, the values mirror those in the AINUR ArkAddon: 1 for the speaker, 10 
     <!-- AINUR processing mode: includes reverberation, Loudness, and BassEx, just as in AINUR. If set to `true`, the audio output for all presets will be bit-for-bit identical to the original AINUR (reverberation requires 12/14/16_TUNING; in the original BLU, this setting is configurable but non-functional). If set to `false`, the output will be bit-for-bit identical to the original BLU. This setting takes effect from the moment the service is started. -->
     <boolean name="ainurReverb" value="true" />
 
-    <!-- Automatic mode based on the type of running application (game / video / music).
-         `autoMode` enables monitoring, `currentAutoModeState` stores the last state of the toggle,
-         and `autoModeScanTime` defines the check interval in milliseconds.
-         Currently, the mode is only detected and logged; it does not yet switch presets. -->
+    <!-- Automatic listening mode (music / movie / game) from what is playing: the audio
+         attributes of the active players (USAGE_GAME, CONTENT_TYPE_MOVIE, CONTENT_TYPE_MUSIC).
+         `currentAutoModeState` is the on/off state of the toggle (setAutoMode); choosing a mode
+         by hand switches it off.  The mode selects the mode preset and the user sound profile.
+         `autoMode` and `autoModeScanTime` belonged to the old process-list scan and are no
+         longer used. -->
     <boolean name="autoMode" value="false" />
     <boolean name="currentAutoModeState" value="false" />
     <int name="autoModeScanTime" value="5000" />
