@@ -22,7 +22,7 @@ https://t.me/ryukimodsscreenshots/133
 
 ## Download Links and Changelog
 
-v2.1 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
+v2.1 https://move2link.co/2cf8522
 - ArkamysAudio.apk new UI and features
 - Add new optionals stream.mode and arkamys.game
 
