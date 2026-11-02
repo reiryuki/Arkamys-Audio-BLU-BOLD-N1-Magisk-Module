@@ -12,7 +12,7 @@ Equalizer global type sound effect ported from BLU BOLD N1 (N0030WW) and integra
 - Reverse engeneered by @isus203 https://github.com/xz529/arkamys_modules_README
 
 ## Screenshots
-https://t.me/ryukimodsscreenshots/126
+https://t.me/ryukimodsscreenshots/133
 
 ## Requirements
 - arm64-v8a or armeabi-v7a architecture
@@ -21,6 +21,10 @@ https://t.me/ryukimodsscreenshots/126
 - Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Download Links and Changelog
+
+v2.1 https://github.com/reiryuki/Arkamys-Audio-BLU-BOLD-N1-Magisk-Module
+- ArkamysAudio.apk new UI and features
+- Add new optionals stream.mode and arkamys.game
 
 v2.0 https://move2link.co/ac955df
 - Reverse engeneered by @isus203
@@ -65,9 +69,6 @@ v1.2
 - Allow installation in Android Emulator
 - Fix architecture detection
 
-v1.1
-- Using hardwareaudio instead of audio* for AUDIO64BIT detection
-
 ## Download Tutorial
 https://t.me/ryukinotes/97
 
@@ -79,6 +80,7 @@ https://t.me/ryukinotes/97
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (enable show system apps) and reboot afterwards
 
 ## Optionals
+- https://t.me/ryukinotes/100
 - Global: https://t.me/ryukinotes/35
 - Stream: https://t.me/ryukinotes/52
 

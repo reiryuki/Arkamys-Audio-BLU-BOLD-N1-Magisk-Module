@@ -35,6 +35,7 @@ fi
 
 # prop
 resetprop -n ro.audio.ignore_effects false
+resetprop -n ro.arkamys.music_stream false
 
 # restart
 if [ "$API" -ge 24 ]; then

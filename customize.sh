@@ -311,8 +311,90 @@ done
 APPS="`ls $MODPATH/system/priv-app`
       `ls $MODPATH/system/app`"
 hide_oat
-APPS="$APPS MusicFX AudioFX"
+APPS="$APPS MusicFX"
 hide_app
+
+# stream mode
+FILE=$MODPATH/.aml.sh
+PROP=`grep_prop stream.mode $OPTIONALS`
+if echo "$PROP" | grep -q m; then
+  ui_print "- Activating music stream..."
+  sed -i 's|#m||g' $FILE
+  sed -i 's|music_stream false|music_stream true|g' $MODPATH/service.sh
+  ui_print "  The sound effect will always be enabled"
+  ui_print "  and cannot be disabled by on/off togglers"
+  ui_print " "
+else
+  APPS=AudioFX
+  hide_app
+fi
+if echo "$PROP" | grep -q r; then
+  ui_print "- Activating ring stream..."
+  sed -i 's|#r||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q a; then
+  ui_print "- Activating alarm stream..."
+  sed -i 's|#a||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q s; then
+  ui_print "- Activating system stream..."
+  sed -i 's|#s||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q v; then
+  ui_print "- Activating voice_call stream..."
+  sed -i 's|#v||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q n; then
+  ui_print "- Activating notification stream..."
+  sed -i 's|#n||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q b; then
+  ui_print "- Activating bluetooth_sco stream..."
+  sed -i 's|#b||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q f; then
+  ui_print "- Activating dtmf stream..."
+  sed -i 's|#f||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q e; then
+  ui_print "- Activating enforced_audible stream..."
+  sed -i 's|#e||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q y; then
+  ui_print "- Activating accessibility stream..."
+  sed -i 's|#y||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q t; then
+  ui_print "- Activating tts stream..."
+  sed -i 's|#t||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q i; then
+  ui_print "- Activating assistant stream..."
+  sed -i 's|#i||g' $FILE
+  ui_print " "
+fi
+if echo "$PROP" | grep -q c; then
+  ui_print "- Activating call_assistant stream..."
+  sed -i 's|#c||g' $FILE
+  ui_print " "
+fi
+if [ "`grep_prop arkamys.game $OPTIONALS`" != 0 ]; then
+  sed -i 's|#p||g' $FILE
+  sed -i 's|#g||g' $FILE
+else
+  ui_print "- Does not use Arkamys Game patch & rerouting stream"
+  ui_print " "
+fi
 
 # directory
 if [ "$API" -le 25 ]; then
